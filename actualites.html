@@ -62,7 +62,14 @@
             color: var(--primary-blue);
             text-decoration: none;
             transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+
+.logo img {
+    width: 300px;
+}
 
         .logo:hover {
             transform: scale(1.05);
@@ -103,13 +110,12 @@
             color: var(--primary-blue);
         }
 
-        .btn-donate {
+        a.btn-donate {
             background: var(--primary-blue);
             color: var(--white);
             padding: 0.8rem 1.8rem;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 165, 170, 0.3);
         }
@@ -437,7 +443,7 @@
         .page-btn {
             width: 45px;
             height: 45px;
-            border: 2px solid var(--primary-blue);
+            border: 1px solid var(--primary-blue);
             background: transparent;
             color: var(--primary-blue);
             border-radius: 10px;
@@ -657,15 +663,15 @@
     <!-- Header -->
     <header>
         <nav>
-            <a href="/accueil" class="logo"><img src="./logo.png" alt="logo du site"></a>
+            <a href="./accueil" class="logo"><img src="./logo.png" alt="logo du site"></a>
             <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="/accueil">Accueil</a></li>
-                <li><a href="/notre-association.html">Notre association</a></li>
-                <li><a href="/actualites.html" class="active">Actualités</a></li>
-                <li><a href="/nebeday-community.html">Nébéday Community</a></li>
-                <li><a href="/contact.html">Contact</a></li>
-                <li><a href="/don.html" class="btn-donate">Faire un don</a></li>
+                <li><a href="./accueil">Accueil</a></li>
+                <li><a href="./notre-association.html">Notre association</a></li>
+                <li><a href="./actualites.html" class="active">Actualités</a></li>
+                <li><a href="./nebeday-community.html">Nébéday Community</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="./don.html" class="btn-donate">Faire un don</a></li>
             </ul>
         </nav>
     </header>
@@ -678,7 +684,7 @@
 
     <!-- Breadcrumb -->
     <div class="breadcrumb">
-        <a href="/accueil.html">Accueil</a> / <span>Actualités</span>
+        <a href="./accueil.html">Accueil</a> / <span>Actualités</span>
     </div>
 
     <div class="container">

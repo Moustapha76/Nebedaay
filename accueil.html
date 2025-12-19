@@ -63,7 +63,7 @@
             text-decoration: none;
             transition: transform 0.3s ease;
         }
-
+        .logo img{width: 300px;}
         .logo:hover {
             transform: scale(1.05);
         }
@@ -103,7 +103,7 @@
             color: var(--primary-blue);
         }
 
-        .btn-donate {
+        a.btn-donate {
             background: var(--primary-blue);
             color: var(--white);
             padding: 0.8rem 1.8rem;
@@ -123,7 +123,7 @@
         /* Hero Section */
         .hero {
             position: relative;
-            height: 85vh;
+            height: 80vh;
             background: linear-gradient(135deg, rgba(0, 165, 170, 0.9) 0%, rgba(81, 56, 38, 0.8) 100%),
                         url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%2300A5AA" width="1200" height="800"/><g fill-opacity="0.1"><circle fill="%23CAD401" cx="200" cy="200" r="150"/><circle fill="%23CAD401" cx="800" cy="400" r="200"/><circle fill="%23CAD401" cx="1000" cy="600" r="180"/></g></svg>');
             background-size: cover;
@@ -137,7 +137,7 @@
 
         .hero-content {
             max-width: 1200px;
-            padding: 2rem;
+            padding: 2rem 2rem 8rem;
             text-align: center;
             animation: fadeInUp 1s ease;
             position: relative;
@@ -157,7 +157,7 @@
 
         .hero h1 {
             font-family: 'Montserrat', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 800;
             margin-bottom: 1.5rem;
             line-height: 1.2;
@@ -166,7 +166,7 @@
         }
 
         .hero p {
-            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            font-size: clamp(1.1rem, 2vw, 1.2rem);
             margin-bottom: 2.5rem;
             max-width: 800px;
             margin-left: auto;
@@ -246,9 +246,8 @@
 
         /* Stats Section */
         .stats-section {
-            background: var(--white);
             padding: 4rem 2rem;
-            margin-top: -50px;
+            margin-top: -8%;
             position: relative;
             z-index: 10;
         }
@@ -257,7 +256,7 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
             gap: 3rem;
             border-radius: 20px;
             background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-green) 100%);
@@ -303,7 +302,7 @@
 
         /* About Section */
         .about-section {
-            padding: 6rem 2rem;
+            padding: 4rem 2rem 6em;
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -494,6 +493,7 @@
             height: 100%;
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><path fill="rgba(255,255,255,0.03)" d="M0,300 Q300,200 600,300 T1200,300 L1200,600 L0,600 Z"/></svg>');
             background-size: cover;
+            background-color: var(--primary-blue);
         }
 
         .cta-content {
@@ -659,12 +659,12 @@
             <a href="#" class="logo"><img src="./logo.png" alt="logo du site"></a>
             <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="/accueil" class="active"><img src="./logo.png" alt="logo du site"></a></li>
-                <li><a href="/notre-association.html">Notre association</a></li>
-                <li><a href="/actualites.html">Actualités</a></li>
-                <li><a href="/nebeday-community.html">Nébéday Community</a></li>
-                <li><a href="/contact.html">Contact</a></li>
-                <li><a href="/don.html" class="btn-donate">Faire un don</a></li>
+                <li><a href="./accueil" class="active">Accueil</a></li>
+                <li><a href="./notre-association.html">Notre association</a></li>
+                <li><a href="./actualites.html">Actualités</a></li>
+                <li><a href="./nebeday-community.html">Nébéday Community</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="./don.html" class="btn-donate">Faire un don</a></li>
             </ul>
         </nav>
     </header>
@@ -705,7 +705,7 @@
 
     <!-- About Section -->
     <section class="about-section scroll-animate" id="association">
-        <h2 class="section-title">Nos Axes Stratégiques</h2>
+        <h2 class="section-title">Nos axes stratégiques</h2>
         <p class="section-subtitle">Nébéday agit sur plusieurs fronts pour la protection de l'environnement et le développement durable au Sénégal</p>
         
         <div class="about-grid">
@@ -745,7 +745,7 @@
     <!-- Actions Section -->
     <section class="actions-section scroll-animate" id="actions">
         <div class="actions-container">
-            <h2 class="section-title">Nos Actions sur le Terrain</h2>
+            <h2 class="section-title">Nos actions sur le terrain</h2>
             <p class="section-subtitle">Découvrez nos projets concrets qui font la différence chaque jour</p>
             
             <div class="actions-grid">
@@ -760,7 +760,7 @@
                 <div class="action-card">
                     <div class="action-image">🦜</div>
                     <div class="action-content">
-                        <h3 class="action-title">Aire Marine Protégée</h3>
+                        <h3 class="action-title">Aire marine Protégée</h3>
                         <p class="action-description">Création et gestion d'aires marines protégées pour préserver la biodiversité marine et les moyens de subsistance des pêcheurs.</p>
                         <a href="#" class="action-link">En savoir plus →</a>
                     </div>
@@ -780,7 +780,7 @@
     <!-- CTA Section -->
     <section class="cta-section" id="don">
         <div class="cta-content">
-            <h2 class="cta-title">Soutenez Nos Actions</h2>
+            <h2 class="cta-title">Soutenez nos actions</h2>
             <p class="cta-text">Votre contribution nous aide à protéger l'environnement et à soutenir les communautés locales. Ensemble, nous pouvons faire la différence.</p>
             <div class="hero-buttons">
                 <a href="/don.html" class="btn-primary">Faire un don maintenant</a>
