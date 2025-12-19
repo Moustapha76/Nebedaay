@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notre Association - Nébéday</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Verdana&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #00A5AA;
+            --primary-green: #CAD401;
+            --brown: #513826;
+            --bg-light: #F9F9F9;
+            --white: #FFFFFF;
+            --text-dark: #2C2C2C;
+            --text-gray: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Verdana, Geneva, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 0.6s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-blue);
+        }
+
+        .btn-donate {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 165, 170, 0.3);
+        }
+
+        .btn-donate:hover {
+            background: var(--primary-green);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(202, 212, 1, 0.4);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, rgba(0, 165, 170, 0.95) 0%, rgba(81, 56, 38, 0.9) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%2300A5AA" width="1200" height="400"/><g fill-opacity="0.1"><circle fill="%23CAD401" cx="300" cy="200" r="120"/><circle fill="%23CAD401" cx="900" cy="150" r="150"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 5rem 2rem 3rem;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .page-header p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        .breadcrumb a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* History Section */
+        .history-section {
+            padding: 4rem 0;
+        }
+
+        .history-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .history-text h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .history-text p {
+            margin-bottom: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-gray);
+        }
+
+        .history-highlight {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .history-highlight h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .history-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        .history-image-placeholder {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-green) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .history-image-placeholder::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.5; }
+            50% { transform: scale(1.1) rotate(5deg); opacity: 0.8; }
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            background: var(--white);
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            text-align: center;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-blue), var(--primary-green));
+            border-radius: 10px;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+            animation: fadeInUp 0.8s ease both;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: auto;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+            text-align: left;
+        }
+
+        .timeline-year {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--brown);
+            margin-bottom: 0.8rem;
+        }
+
+        .timeline-description {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--primary-green);
+            border: 4px solid var(--white);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px var(--primary-blue);
+            z-index: 2;
+        }
+
+        /* Strategic Axes Section */
+        .axes-section {
+            padding: 5rem 0;
+        }
+
+        .axes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .axis-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .axis-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--primary-green));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .axis-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .axis-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .axis-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .axis-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--brown);
+            margin-bottom: 1rem;
+        }
+
+        .axis-description {
+            color: var(--text-gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .axis-link {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+
+        .axis-link:hover {
+            gap: 1rem;
+            color: var(--primary-green);
+        }
+
+        /* Team Section */
+        .team-section {
+            background: linear-gradient(135deg, rgba(0, 165, 170, 0.05) 0%, rgba(202, 212, 1, 0.05) 100%);
+            padding: 5rem 0;
+        }
+
+        .team-intro {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            text-align: center;
+        }
+
+        .team-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .team-stat {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .team-stat:hover {
+            transform: scale(1.05);
+        }
+
+        .team-stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-stat-label {
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+        }
+
+        .team-member {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .team-member-photo {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-member-photo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.3) 100%);
+        }
+
+        .team-member-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .team-member-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--brown);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member-role {
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .team-member-bio {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Partners Section */
+        .partners-section {
+            background: var(--white);
+            padding: 5rem 0;
+        }
+
+        .partners-intro {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .partner-logo {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 150px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .partner-logo:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .partner-placeholder {
+            font-size: 3rem;
+            opacity: 0.5;
+        }
+
+        /* Reports Section */
+        .reports-section {
+            padding: 5rem 0;
+        }
+
+        .reports-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .report-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .report-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .report-icon {
+            font-size: 3rem;
+            flex-shrink: 0;
+        }
+
+        .report-content {
+            flex: 1;
+        }
+
+        .report-year {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .report-title {
+            font-weight: 600;
+            color: var(--brown);
+            margin-bottom: 0.8rem;
+        }
+
+        .report-link {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .report-link:hover {
+            color: var(--primary-green);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--brown);
+            color: var(--white);
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><path fill="rgba(255,255,255,0.03)" d="M0,300 Q300,200 600,300 T1200,300 L1200,600 L0,600 Z"/></svg>');
+            background-size: cover;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-text {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary-blue);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            background: var(--primary-green);
+            color: var(--white);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--brown);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-green);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--primary-green);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--primary-blue);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .history-content {
+                grid-template-columns: 1fr;
+            }
+
+            .history-image {
+                order: -1;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                flex-direction: row !important;
+                padding-left: 50px;
+            }
+
+            .timeline-content {
+                width: 100%;
+                margin: 0 !important;
+                text-align: left !important;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .axes-grid, .team-grid, .partners-grid, .reports-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="/accueil" class="logo"><img src="./logo.png" alt="logo du site"></a>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+              <ul class="nav-links" id="navLinks">
+                <li><a href="/accueil">Accueil</a></li>
+                <li><a href="/notre-association.html" class="active">Notre association</a></li>
+                <li><a href="/actualites.html">Actualités</a></li>
+                <li><a href="/nebeday-community.html">Nébéday Community</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+                <li><a href="/don.html" class="btn-donate">Faire un don</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Notre Association</h1>
+        <p>Découvrez l'histoire, les valeurs et l'équipe qui font de Nébéday un acteur majeur de la protection de l'environnement au Sénégal</p>
+    </section>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="maquette_nebeday_accueil.html">Accueil</a> / <span>Notre association</span>
+    </div>
+
+    <!-- History Section -->
+    <section class="history-section">
+        <div class="container">
+            <div class="history-content scroll-animate">
+                <div class="history-text">
+                    <h2>Notre Histoire</h2>
+                    <p>Nébéday est une association sénégalaise née de la volonté de protéger et restaurer les écosystèmes naturels du Sénégal. Le nom "Nébéday" signifie en wolof "bon et beau", reflétant notre vision d'un environnement sain et harmonieux.</p>
+                    
+                    <p>Depuis sa création, Nébéday œuvre pour la gestion durable et participative des ressources naturelles, en plaçant les communautés locales au cœur de notre action. Nous croyons fermement que la protection de l'environnement passe par l'engagement et l'autonomisation des populations, en particulier des femmes et des jeunes.</p>
+                    
+                    <p>Aujourd'hui, Nébéday est présente dans 10 des 14 régions du Sénégal, avec 6 bureaux et plus de 100 collaborateurs dévoués à la cause environnementale. Notre approche holistique combine conservation de la biodiversité, restauration des écosystèmes, éducation environnementale et développement économique durable.</p>
+                    
+                    <div class="history-highlight">
+                        <h3>🌍 Notre Vision</h3>
+                        <p>Un Sénégal où les communautés vivent en harmonie avec la nature, où les écosystèmes sont préservés et restaurés, et où les générations futures peuvent bénéficier d'un environnement sain et prospère.</p>
+                    </div>
+                </div>
+                <div class="history-image">
+                    <div class="history-image-placeholder">🌳</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="container">
+            <h2 class="section-title">Notre Parcours</h2>
+            <p class="section-subtitle">Les moments clés qui ont façonné Nébéday</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2011</div>
+                        <div class="timeline-title">Création de Nébéday</div>
+                        <p class="timeline-description">Fondation de l'association avec pour mission la protection des forêts et des aires marines protégées au Sénégal.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2014</div>
+                        <div class="timeline-title">Première Aire Marine Protégée</div>
+                        <p class="timeline-description">Création de l'Aire Marine Protégée communautaire de Bamboung, un modèle de cogestion réussie.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2017</div>
+                        <div class="timeline-title">Lancement "Reboisons le Sénégal"</div>
+                        <p class="timeline-description">Début de notre programme ambitieux de reforestation à l'échelle nationale avec les communautés.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2020</div>
+                        <div class="timeline-title">1 Million d'arbres plantés</div>
+                        <p class="timeline-description">Franchissement du cap symbolique du million d'arbres plantés grâce à la mobilisation des communautés.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2024</div>
+                        <div class="timeline-title">Expansion nationale</div>
+                        <p class="timeline-description">Présence dans 10 régions avec 6 bureaux et plus de 100 collaborateurs engagés pour l'environnement.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategic Axes Section -->
+    <section class="axes-section">
+        <div class="container">
+            <h2 class="section-title scroll-animate">Nos Axes Stratégiques</h2>
+            <p class="section-subtitle scroll-animate">Six domaines d'intervention pour un impact durable</p>
+            
+            <div class="axes-grid">
+                <div class="axis-card scroll-animate">
+                    <span class="axis-icon">🌳</span>
+                    <h3 class="axis-title">Gestion Forestière Durable</h3>
+                    <p class="axis-description">Préservation et restauration des forêts sénégalaises en partenariat avec les communautés locales pour assurer leur pérennité.</p>
+                    <a href="#" class="axis-link">En savoir plus →</a>
+                </div>
+
+                <div class="axis-card scroll-animate">
+                    <span class="axis-icon">🌊</span>
+                    <h3 class="axis-title">Protection des Écosystèmes Côtiers</h3>
+                    <p class="axis-description">Sauvegarde des mangroves et lutte contre l'érosion côtière pour préserver nos littoraux et les moyens de subsistance des populations.</p>
+                    <a href="#" class="axis-link">En savoir plus →</a>
+                </div>
+
+                <div class="axis-card scroll-animate">
+                    <span class="axis-icon">👥</span>
+                    <h3 class="axis-title">Engagement Communautaire</h3>
+                    <p class="axis-description">Mobilisation et autonomisation des populations locales, avec un focus particulier sur les femmes et les jeunes.</p>
+                    <a href="#" class="axis-link">En savoir plus →</a>
+                </div>
+
+                <div class="axis-card scroll-animate">
+                    <span class="axis-icon">🎓</span>
+                    <h3 class="axis-title">Éducation Environnementale</h3>
+                    <p class="axis-description">Sensibilisation et formation des générations futures aux enjeux écologiques pour un changement durable des comportements.</p>
+                    <a href="#" class="axis-link">En savoir plus →</a>
+                </div>
+
+                <div class="axis-card scroll-animate">
+                    <span class="axis-icon">🐢</span>
+                    <h3 class="axis-title">Conservation de la Biodiversité</h3>
+                    <p class="axis-description">Protection des espèces menacées et de leurs habitats naturels pour maintenir l'équilibre des écosystèmes.</p>
+                    <a href="#" class="axis-link">En savoir plus →</a>
+                </div>
+
+                <div class="axis-card scroll-animate">
+                    <span class="axis-icon">♻️</span>
+                    <h3 class="axis-title">Économie Circulaire</h3>
+                    <p class="axis-description">Valorisation durable des ressources naturelles pour générer des revenus locaux tout en préservant l'environnement.</p>
+                    <a href="#" class="axis-link">En savoir plus →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title scroll-animate">Notre Équipe</h2>
+            
+            <div class="team-intro scroll-animate">
+                <p>Nébéday c'est avant tout une équipe passionnée et dévouée, composée d'experts en environnement, de coordinateurs de terrain, d'animateurs communautaires et de nombreux bénévoles. Ensemble, nous travaillons chaque jour pour faire de notre vision une réalité.</p>
+            </div>
+
+            <div class="team-stats">
+                <div class="team-stat scroll-animate">
+                    <span class="team-stat-number">100+</span>
+                    <span class="team-stat-label">Collaborateurs</span>
+                </div>
+                <div class="team-stat scroll-animate">
+                    <span class="team-stat-number">6</span>
+                    <span class="team-stat-label">Bureaux régionaux</span>
+                </div>
+                <div class="team-stat scroll-animate">
+                    <span class="team-stat-number">10</span>
+                    <span class="team-stat-label">Régions d'intervention</span>
+                </div>
+                <div class="team-stat scroll-animate">
+                    <span class="team-stat-number">500+</span>
+                    <span class="team-stat-label">Volontaires actifs</span>
+                </div>
+            </div>
+
+            <h3 class="section-title scroll-animate" style="font-size: 2rem; margin-bottom: 3rem;">Équipe de Direction</h3>
+
+            <div class="team-grid">
+                <div class="team-member scroll-animate">
+                    <div class="team-member-photo">👨‍💼</div>
+                    <div class="team-member-info">
+                        <h4 class="team-member-name">Jean-Paul Coly</h4>
+                        <p class="team-member-role">Directeur Exécutif</p>
+                        <p class="team-member-bio">Expert en conservation avec plus de 15 ans d'expérience dans la gestion des aires protégées.</p>
+                    </div>
+                </div>
+
+                <div class="team-member scroll-animate">
+                    <div class="team-member-photo">👩‍💼</div>
+                    <div class="team-member-info">
+                        <h4 class="team-member-name">Mariama Diallo</h4>
+                        <p class="team-member-role">Directrice des Programmes</p>
+                        <p class="team-member-bio">Spécialiste en développement communautaire et autonomisation des femmes.</p>
+                    </div>
+                </div>
+
+                <div class="team-member scroll-animate">
+                    <div class="team-member-photo">👨‍🔬</div>
+                    <div class="team-member-info">
+                        <h4 class="team-member-name">Stéphane Badji</h4>
+                        <p class="team-member-role">Directeur Scientifique</p>
+                        <p class="team-member-bio">Biologiste marin, docteur en écologie et conservation des écosystèmes côtiers.</p>
+                    </div>
+                </div>
+
+                <div class="team-member scroll-animate">
+                    <div class="team-member-photo">👩‍💻</div>
+                    <div class="team-member-info">
+                        <h4 class="team-member-name">Oulimata Sarr</h4>
+                        <p class="team-member-role">Responsable Communication</p>
+                        <p class="team-member-bio">Experte en communication environnementale et mobilisation communautaire.</p>
+                    </div>
+                </div>
+
+                <div class="team-member scroll-animate">
+                    <div class="team-member-photo">👨‍🌾</div>
+                    <div class="team-member-info">
+                        <h4 class="team-member-name">Moussa Ndiaye</h4>
+                        <p class="team-member-role">Coordinateur Reforestation</p>
+                        <p class="team-member-bio">Ingénieur agronome spécialisé en agroforesterie et restauration écologique.</p>
+                    </div>
+                </div>
+
+                <div class="team-member scroll-animate">
+                    <div class="team-member-photo">👩‍🏫</div>
+                    <div class="team-member-info">
+                        <h4 class="team-member-name">Louise Faye</h4>
+                        <p class="team-member-role">Responsable Éducation</p>
+                        <p class="team-member-bio">Pédagogue passionnée par l'éducation environnementale des jeunes générations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners-section">
+        <div class="container">
+            <h2 class="section-title scroll-animate">Nos Partenaires</h2>
+            <p class="partners-intro scroll-animate">
+                Nébéday collabore avec de nombreux partenaires techniques et financiers, des institutions publiques, des ONG internationales et des entreprises engagées. Ces partenariats stratégiques nous permettent de démultiplier notre impact et d'assurer la pérennité de nos actions.
+            </p>
+            
+            <div class="partners-grid">
+                <div class="partner-logo scroll-animate">
+                    <div class="partner-placeholder">🏛️</div>
+                </div>
+                <div class="partner-logo scroll-animate">
+                    <div class="partner-placeholder">🌍</div>
+                </div>
+                <div class="partner-logo scroll-animate">
+                    <div class="partner-placeholder">🤝</div>
+                </div>
+                <div class="partner-logo scroll-animate">
+                    <div class="partner-placeholder">🏢</div>
+                </div>
+                <div class="partner-logo scroll-animate">
+                    <div class="partner-placeholder">🌱</div>
+                </div>
+                <div class="partner-logo scroll-animate">
+                    <div class="partner-placeholder">💼</div>
+                </div>
+                <div class="partner-logo scroll-animate">
+                    <div class="partner-placeholder">🎓</div>
+                </div>
+                <div class="partner-logo scroll-animate">
+                    <div class="partner-placeholder">🔬</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reports Section -->
+    <section class="reports-section">
+        <div class="container">
+            <h2 class="section-title scroll-animate">Nos Rapports d'Activités</h2>
+            <p class="section-subtitle scroll-animate">Transparence et redevabilité envers nos partenaires et bénéficiaires</p>
+            
+            <div class="reports-grid">
+                <div class="report-card scroll-animate">
+                    <div class="report-icon">📊</div>
+                    <div class="report-content">
+                        <div class="report-year">2023</div>
+                        <div class="report-title">Rapport Annuel 2023</div>
+                        <a href="#" class="report-link">Télécharger le PDF (2.5 MB) →</a>
+                    </div>
+                </div>
+
+                <div class="report-card scroll-animate">
+                    <div class="report-icon">📊</div>
+                    <div class="report-content">
+                        <div class="report-year">2022</div>
+                        <div class="report-title">Rapport Annuel 2022</div>
+                        <a href="#" class="report-link">Télécharger le PDF (3.1 MB) →</a>
+                    </div>
+                </div>
+
+                <div class="report-card scroll-animate">
+                    <div class="report-icon">📊</div>
+                    <div class="report-content">
+                        <div class="report-year">2021</div>
+                        <div class="report-title">Rapport Annuel 2021</div>
+                        <a href="#" class="report-link">Télécharger le PDF (2.8 MB) →</a>
+                    </div>
+                </div>
+
+                <div class="report-card scroll-animate">
+                    <div class="report-icon">💰</div>
+                    <div class="report-content">
+                        <div class="report-year">2023</div>
+                        <div class="report-title">Rapport Financier 2023</div>
+                        <a href="#" class="report-link">Télécharger le PDF (1.2 MB) →</a>
+                    </div>
+                </div>
+
+                <div class="report-card scroll-animate">
+                    <div class="report-icon">🌳</div>
+                    <div class="report-content">
+                        <div class="report-year">2023</div>
+                        <div class="report-title">Rapport d'Impact Reforestation</div>
+                        <a href="#" class="report-link">Télécharger le PDF (4.5 MB) →</a>
+                    </div>
+                </div>
+
+                <div class="report-card scroll-animate">
+                    <div class="report-icon">🔍</div>
+                    <div class="report-content">
+                        <div class="report-year">2024</div>
+                        <div class="report-title">Étude d'Impact Biodiversité</div>
+                        <a href="#" class="report-link">Télécharger le PDF (5.8 MB) →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2 class="cta-title">Rejoignez-nous dans notre Mission</h2>
+            <p class="cta-text">Que vous soyez un individu, une entreprise ou une institution, il existe de nombreuses façons de contribuer à la protection de l'environnement au Sénégal.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn-primary">Faire un don</a>
+                <a href="#" class="btn-secondary">Devenir partenaire</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Nébéday</h3>
+                <p>Association sénégalaise pour la gestion durable et participative des ressources naturelles.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon">📘</a>
+                    <a href="#" class="social-icon">📷</a>
+                    <a href="#" class="social-icon">🔗</a>
+                    <a href="#" class="social-icon">▶️</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>S'informer</h3>
+                <ul>
+                    <li><a href="#">Nos actualités</a></li>
+                    <li><a href="#">Nos événements</a></li>
+                    <li><a href="#">Reboisons le Sénégal</a></li>
+                    <li><a href="#">Espace presse</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Notre association</h3>
+                <ul>
+                    <li><a href="#">Notre histoire</a></li>
+                    <li><a href="#">Notre équipe</a></li>
+                    <li><a href="#">Nos partenaires</a></li>
+                    <li><a href="#">Rapports d'activités</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="mailto:contact@nebeday.org">📧 contact@nebeday.org</a></li>
+                    <li><a href="tel:+221...">📞 +221 ...</a></li>
+                    <li><a href="#">Nous rejoindre</a></li>
+                    <li><a href="#">Recrutement</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Nébéday - Tous droits réservés | <a href="#" style="color: inherit;">Mentions légales</a> | <a href="#" style="color: inherit;">Politique de confidentialité</a></p>
+            <p style="margin-top: 1rem; font-size: 0.85rem;">Site développé par Grapelink</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

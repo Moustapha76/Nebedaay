@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faire un Don - Nébéday</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Verdana&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #00A5AA;
+            --primary-green: #CAD401;
+            --brown: #513826;
+            --bg-light: #F9F9F9;
+            --white: #FFFFFF;
+            --text-dark: #2C2C2C;
+            --text-gray: #666666;
+            --wave-blue: #1C4E9E;
+            --orange: #FF6600;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Verdana, Geneva, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 0.6s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-blue);
+        }
+
+        .btn-donate {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 165, 170, 0.3);
+        }
+
+        .btn-donate:hover {
+            background: var(--primary-green);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(202, 212, 1, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 165, 170, 0.95) 0%, rgba(202, 212, 1, 0.9) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%2300A5AA" width="1200" height="600"/><g fill-opacity="0.1"><circle fill="%23FFFFFF" cx="200" cy="300" r="150"/><circle fill="%23FFFFFF" cx="800" cy="200" r="200"/><circle fill="%23FFFFFF" cx="1000" cy="450" r="180"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 6rem 2rem;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Impact Section */
+        .impact-section {
+            background: var(--white);
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            text-align: center;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .impact-card {
+            background: var(--bg-light);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .impact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .impact-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .impact-amount {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-description {
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        /* Donation Form Section */
+        .donation-section {
+            padding: 5rem 0;
+        }
+
+        .donation-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .donation-form {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .step-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--brown);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .step-dot {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .step-dot.active {
+            background: var(--primary-blue);
+            transform: scale(1.2);
+        }
+
+        .step-dot.completed {
+            background: var(--primary-green);
+        }
+
+        /* Amount Selection */
+        .amount-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .amount-option {
+            padding: 2rem 1rem;
+            background: var(--bg-light);
+            border: 3px solid transparent;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .amount-option:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-5px);
+        }
+
+        .amount-option.selected {
+            background: var(--primary-blue);
+            color: var(--white);
+            border-color: var(--primary-blue);
+        }
+
+        .amount-value {
+            font-size: 2rem;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .amount-label {
+            font-size: 0.85rem;
+        }
+
+        .custom-amount {
+            margin-top: 2rem;
+        }
+
+        .custom-amount-input {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .custom-amount-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        /* Frequency Selection */
+        .frequency-options {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .frequency-btn {
+            flex: 1;
+            padding: 1.5rem;
+            background: var(--bg-light);
+            border: 3px solid transparent;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .frequency-btn:hover {
+            border-color: var(--primary-blue);
+        }
+
+        .frequency-btn.selected {
+            background: var(--primary-blue);
+            color: var(--white);
+            border-color: var(--primary-blue);
+        }
+
+        /* Payment Methods */
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .payment-method {
+            padding: 2rem;
+            background: var(--bg-light);
+            border: 3px solid transparent;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .payment-method:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-5px);
+        }
+
+        .payment-method.selected {
+            border-color: var(--primary-blue);
+            background: rgba(0, 165, 170, 0.05);
+        }
+
+        .payment-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .payment-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--brown);
+        }
+
+        /* Wave Specific */
+        .payment-method.wave .payment-icon {
+            color: var(--wave-blue);
+        }
+
+        /* Orange Money Specific */
+        .payment-method.orange .payment-icon {
+            color: var(--orange);
+        }
+
+        /* Card Payment Specific */
+        .payment-method.card .payment-icon {
+            color: var(--primary-green);
+        }
+
+        /* Phone Number Input */
+        .phone-input-group {
+            margin-bottom: 2rem;
+        }
+
+        .phone-input {
+            width: 100%;
+            padding: 1.2rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .phone-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .phone-help {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        /* Personal Info */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            color: var(--brown);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .form-checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-checkbox {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+
+        /* Navigation Buttons */
+        .form-navigation {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-next, .btn-submit {
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .btn-next:hover, .btn-submit:hover {
+            background: var(--primary-green);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(202, 212, 1, 0.4);
+        }
+
+        .btn-back {
+            background: var(--bg-light);
+            color: var(--brown);
+        }
+
+        .btn-back:hover {
+            background: #e0e0e0;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Summary Section */
+        .donation-summary {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .summary-row:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-blue);
+        }
+
+        /* Why Donate Section */
+        .why-section {
+            background: var(--white);
+            padding: 5rem 0;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .why-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .why-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .why-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--brown);
+            margin-bottom: 1rem;
+        }
+
+        .why-description {
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--brown);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-green);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--primary-green);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--primary-blue);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .donation-form {
+                padding: 2rem 1.5rem;
+            }
+
+            .amount-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .frequency-options {
+                flex-direction: column;
+            }
+
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+
+            .form-navigation {
+                flex-direction: column;
+            }
+        }
+
+        /* Scroll animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Success Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 500px;
+            text-align: center;
+            animation: modalSlideIn 0.5s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .modal-text {
+            color: var(--text-gray);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .modal-btn {
+            padding: 1rem 3rem;
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-btn:hover {
+            background: var(--primary-green);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="/accueil" class="logo"><img src="./logo.png" alt="logo du site"></a>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+             <ul class="nav-links" id="navLinks">
+                <li><a href="/accueil">Accueil</a></li>
+                <li><a href="/notre-association.html">Notre association</a></li>
+                <li><a href="/actualites.html">Actualités</a></li>
+                <li><a href="/nebeday-community.html">Nébéday Community</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+                <li><a href="/don.html" class="btn-donate active">Faire un don</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>💚 Soutenez Notre Mission</h1>
+        <p>Votre générosité nous permet de protéger l'environnement et de soutenir les communautés locales. Chaque contribution compte et fait la différence !</p>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact-section">
+        <div class="container">
+            <h2 class="section-title scroll-animate">Votre Don en Action</h2>
+            <p class="section-subtitle scroll-animate">Découvrez l'impact concret de votre générosité</p>
+            
+            <div class="impact-grid">
+                <div class="impact-card scroll-animate">
+                    <div class="impact-icon">🌱</div>
+                    <div class="impact-amount">5 000 FCFA</div>
+                    <p class="impact-description">Permet de planter et entretenir 10 arbres pendant un an</p>
+                </div>
+
+                <div class="impact-card scroll-animate">
+                    <div class="impact-icon">👩‍🎓</div>
+                    <div class="impact-amount">15 000 FCFA</div>
+                    <p class="impact-description">Finance une journée de sensibilisation environnementale dans une école</p>
+                </div>
+
+                <div class="impact-card scroll-animate">
+                    <div class="impact-icon">🌊</div>
+                    <div class="impact-amount">30 000 FCFA</div>
+                    <p class="impact-description">Contribue à la protection de 1 hectare de mangrove</p>
+                </div>
+
+                <div class="impact-card scroll-animate">
+                    <div class="impact-icon">👥</div>
+                    <div class="impact-amount">50 000 FCFA</div>
+                    <p class="impact-description">Forme 5 femmes à des activités génératrices de revenus durables</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Form Section -->
+    <section class="donation-section">
+        <div class="donation-container">
+            <div class="donation-form scroll-animate">
+                <!-- Step Indicator -->
+                <div class="step-indicator">
+                    <div class="step-dot active" id="dot1">1</div>
+                    <div class="step-dot" id="dot2">2</div>
+                    <div class="step-dot" id="dot3">3</div>
+                    <div class="step-dot" id="dot4">4</div>
+                </div>
+
+                <form id="donationForm">
+                    <!-- Step 1: Amount -->
+                    <div class="form-step active" id="step1">
+                        <h2 class="step-title">Choisissez le montant de votre don</h2>
+                        
+                        <div class="amount-grid">
+                            <div class="amount-option" data-amount="5000">
+                                <span class="amount-value">5 000</span>
+                                <span class="amount-label">FCFA</span>
+                            </div>
+                            <div class="amount-option" data-amount="10000">
+                                <span class="amount-value">10 000</span>
+                                <span class="amount-label">FCFA</span>
+                            </div>
+                            <div class="amount-option" data-amount="25000">
+                                <span class="amount-value">25 000</span>
+                                <span class="amount-label">FCFA</span>
+                            </div>
+                            <div class="amount-option" data-amount="50000">
+                                <span class="amount-value">50 000</span>
+                                <span class="amount-label">FCFA</span>
+                            </div>
+                            <div class="amount-option" data-amount="100000">
+                                <span class="amount-value">100 000</span>
+                                <span class="amount-label">FCFA</span>
+                            </div>
+                            <div class="amount-option" data-amount="custom">
+                                <span class="amount-value">✏️</span>
+                                <span class="amount-label">Autre montant</span>
+                            </div>
+                        </div>
+
+                        <div class="custom-amount" id="customAmountSection" style="display: none;">
+                            <input type="number" class="custom-amount-input" id="customAmount" placeholder="Entrez votre montant" min="1000" step="500">
+                        </div>
+
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-next" onclick="nextStep(1)">Continuer →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Frequency -->
+                    <div class="form-step" id="step2">
+                        <h2 class="step-title">Fréquence du don</h2>
+                        
+                        <div class="frequency-options">
+                            <div class="frequency-btn selected" data-frequency="once">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">💫</div>
+                                <div>Don unique</div>
+                            </div>
+                            <div class="frequency-btn" data-frequency="monthly">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔄</div>
+                                <div>Don mensuel</div>
+                            </div>
+                        </div>
+
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-back" onclick="prevStep(2)">← Retour</button>
+                            <button type="button" class="btn btn-next" onclick="nextStep(2)">Continuer →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Payment Method -->
+                    <div class="form-step" id="step3">
+                        <h2 class="step-title">Choisissez votre moyen de paiement</h2>
+                        
+                        <div class="payment-methods">
+                            <div class="payment-method wave" data-method="wave">
+                                <div class="payment-icon">📱</div>
+                                <div class="payment-name">Wave</div>
+                            </div>
+                            <div class="payment-method orange" data-method="orange">
+                                <div class="payment-icon">📲</div>
+                                <div class="payment-name">Orange Money</div>
+                            </div>
+                            <div class="payment-method card" data-method="card">
+                                <div class="payment-icon">💳</div>
+                                <div class="payment-name">Carte bancaire</div>
+                            </div>
+                        </div>
+
+                        <div class="phone-input-group" id="phoneSection" style="display: none;">
+                            <label class="form-label">Numéro de téléphone *</label>
+                            <input type="tel" class="phone-input" id="phoneNumber" placeholder="+221 XX XXX XX XX">
+                            <p class="phone-help">Vous recevrez une notification pour valider le paiement</p>
+                        </div>
+
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-back" onclick="prevStep(3)">← Retour</button>
+                            <button type="button" class="btn btn-next" onclick="nextStep(3)">Continuer →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Personal Info & Summary -->
+                    <div class="form-step" id="step4">
+                        <h2 class="step-title">Finalisez votre don</h2>
+                        
+                        <div class="donation-summary">
+                            <div class="summary-row">
+                                <span>Montant :</span>
+                                <span id="summaryAmount">0 FCFA</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Fréquence :</span>
+                                <span id="summaryFrequency">-</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Moyen de paiement :</span>
+                                <span id="summaryPayment">-</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Total à payer :</span>
+                                <span id="summaryTotal">0 FCFA</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Nom complet *</label>
+                            <input type="text" class="form-input" id="donorName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Email *</label>
+                            <input type="email" class="form-input" id="donorEmail" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Téléphone *</label>
+                            <input type="tel" class="form-input" id="donorPhone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Affectation du don (optionnel)</label>
+                            <select class="form-select" id="donationPurpose">
+                                <option value="general">Là où le besoin est le plus grand</option>
+                                <option value="reforestation">Programme de reforestation</option>
+                                <option value="marine">Aires marines protégées</option>
+                                <option value="education">Éducation environnementale</option>
+                                <option value="community">Autonomisation des communautés</option>
+                            </select>
+                        </div>
+
+                        <div class="form-checkbox-group">
+                            <input type="checkbox" id="newsletter" class="form-checkbox" checked>
+                            <label for="newsletter">Je souhaite recevoir les actualités de Nébéday</label>
+                        </div>
+
+                        <div class="form-checkbox-group">
+                            <input type="checkbox" id="terms" class="form-checkbox" required>
+                            <label for="terms">J'accepte les conditions d'utilisation et la politique de confidentialité *</label>
+                        </div>
+
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-back" onclick="prevStep(4)">← Retour</button>
+                            <button type="submit" class="btn btn-submit">Faire le don 💚</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Donate Section -->
+    <section class="why-section">
+        <div class="container">
+            <h2 class="section-title scroll-animate">Pourquoi Donner à Nébéday ?</h2>
+            
+            <div class="why-grid">
+                <div class="why-card scroll-animate">
+                    <div class="why-icon">✅</div>
+                    <h3 class="why-title">Transparence Totale</h3>
+                    <p class="why-description">Nous publions nos rapports financiers annuels et vous tenons informé de l'utilisation de vos dons.</p>
+                </div>
+
+                <div class="why-card scroll-animate">
+                    <div class="why-icon">🎯</div>
+                    <h3 class="why-title">Impact Mesurable</h3>
+                    <p class="why-description">Chaque franc est utilisé efficacement pour maximiser notre impact environnemental et social.</p>
+                </div>
+
+                <div class="why-card scroll-animate">
+                    <div class="why-icon">🏆</div>
+                    <h3 class="why-title">Expertise Reconnue</h3>
+                    <p class="why-description">Plus de 10 ans d'expérience et de nombreuses récompenses pour l'excellence de nos actions.</p>
+                </div>
+
+                <div class="why-card scroll-animate">
+                    <div class="why-icon">🤝</div>
+                    <h3 class="why-title">Approche Communautaire</h3>
+                    <p class="why-description">Nous travaillons main dans la main avec les populations locales pour des solutions durables.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-icon">🎉</div>
+            <h2 class="modal-title">Merci pour votre générosité !</h2>
+            <p class="modal-text">Votre don a été enregistré avec succès. Vous recevrez un reçu par email et une notification pour valider le paiement sur votre mobile.</p>
+            <button class="modal-btn" onclick="closeModal()">Fermer</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Nébéday</h3>
+                <p>Association sénégalaise pour la gestion durable et participative des ressources naturelles.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon">📘</a>
+                    <a href="#" class="social-icon">📷</a>
+                    <a href="#" class="social-icon">🔗</a>
+                    <a href="#" class="social-icon">▶️</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>S'informer</h3>
+                <ul>
+                    <li><a href="#">Nos actualités</a></li>
+                    <li><a href="#">Nos événements</a></li>
+                    <li><a href="#">Reboisons le Sénégal</a></li>
+                    <li><a href="#">Espace presse</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Notre association</h3>
+                <ul>
+                    <li><a href="#">Notre histoire</a></li>
+                    <li><a href="#">Notre équipe</a></li>
+                    <li><a href="#">Nos partenaires</a></li>
+                    <li><a href="#">Rapports d'activités</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="mailto:contact@nebeday.org">📧 contact@nebeday.org</a></li>
+                    <li><a href="tel:+221...">📞 +221 ...</a></li>
+                    <li><a href="#">Nous rejoindre</a></li>
+                    <li><a href="#">Recrutement</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Nébéday - Tous droits réservés | <a href="#" style="color: inherit;">Mentions légales</a> | <a href="#" style="color: inherit;">Politique de confidentialité</a></p>
+            <p style="margin-top: 1rem; font-size: 0.85rem;">Site développé par Grapelink</p>
+        </div>
+    </footer>
+
+    <script>
+        // Variables globales
+        let currentStep = 1;
+        let donationData = {
+            amount: 0,
+            frequency: 'once',
+            paymentMethod: '',
+            phoneNumber: ''
+        };
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Amount selection
+        document.querySelectorAll('.amount-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.amount-option').forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+                
+                const amount = this.dataset.amount;
+                const customSection = document.getElementById('customAmountSection');
+                
+                if (amount === 'custom') {
+                    customSection.style.display = 'block';
+                    donationData.amount = 0;
+                } else {
+                    customSection.style.display = 'none';
+                    donationData.amount = parseInt(amount);
+                }
+            });
+        });
+
+        // Custom amount
+        document.getElementById('customAmount').addEventListener('input', function() {
+            donationData.amount = parseInt(this.value) || 0;
+        });
+
+        // Frequency selection
+        document.querySelectorAll('.frequency-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.frequency-btn').forEach(b => b.classList.remove('selected'));
+                this.classList.add('selected');
+                donationData.frequency = this.dataset.frequency;
+            });
+        });
+
+        // Payment method selection
+        document.querySelectorAll('.payment-method').forEach(method => {
+            method.addEventListener('click', function() {
+                document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
+                this.classList.add('selected');
+                donationData.paymentMethod = this.dataset.method;
+                
+                const phoneSection = document.getElementById('phoneSection');
+                if (this.dataset.method === 'wave' || this.dataset.method === 'orange') {
+                    phoneSection.style.display = 'block';
+                } else {
+                    phoneSection.style.display = 'none';
+                }
+            });
+        });
+
+        // Phone number
+        document.getElementById('phoneNumber').addEventListener('input', function() {
+            donationData.phoneNumber = this.value;
+        });
+
+        // Navigation functions
+        function nextStep(current) {
+            // Validation
+            if (current === 1 && donationData.amount < 1000) {
+                alert('Veuillez choisir un montant d\'au moins 1000 FCFA');
+                return;
+            }
+            
+            if (current === 3 && !donationData.paymentMethod) {
+                alert('Veuillez choisir un moyen de paiement');
+                return;
+            }
+            
+            if (current === 3 && (donationData.paymentMethod === 'wave' || donationData.paymentMethod === 'orange') && !donationData.phoneNumber) {
+                alert('Veuillez entrer votre numéro de téléphone');
+                return;
+            }
+            
+            // Update summary if going to step 4
+            if (current === 3) {
+                updateSummary();
+            }
+            
+            // Hide current step
+            document.getElementById(`step${current}`).classList.remove('active');
+            document.getElementById(`dot${current}`).classList.add('completed');
+            
+            // Show next step
+            currentStep = current + 1;
+            document.getElementById(`step${currentStep}`).classList.add('active');
+            document.getElementById(`dot${currentStep}`).classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function prevStep(current) {
+            // Hide current step
+            document.getElementById(`step${current}`).classList.remove('active');
+            document.getElementById(`dot${current}`).classList.remove('active');
+            
+            // Show previous step
+            currentStep = current - 1;
+            document.getElementById(`step${currentStep}`).classList.add('active');
+            document.getElementById(`dot${current - 1}`).classList.remove('completed');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateSummary() {
+            document.getElementById('summaryAmount').textContent = donationData.amount.toLocaleString() + ' FCFA';
+            document.getElementById('summaryFrequency').textContent = donationData.frequency === 'once' ? 'Don unique' : 'Don mensuel';
+            
+            let paymentText = '';
+            if (donationData.paymentMethod === 'wave') paymentText = 'Wave';
+            else if (donationData.paymentMethod === 'orange') paymentText = 'Orange Money';
+            else if (donationData.paymentMethod === 'card') paymentText = 'Carte bancaire';
+            
+            document.getElementById('summaryPayment').textContent = paymentText;
+            document.getElementById('summaryTotal').textContent = donationData.amount.toLocaleString() + ' FCFA';
+        }
+
+        // Form submission
+        document.getElementById('donationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validation
+            const name = document.getElementById('donorName').value;
+            const email = document.getElementById('donorEmail').value;
+            const phone = document.getElementById('donorPhone').value;
+            const terms = document.getElementById('terms').checked;
+            
+            if (!name || !email || !phone || !terms) {
+                alert('Veuillez remplir tous les champs obligatoires et accepter les conditions');
+                return;
+            }
+            
+            // Show success modal
+            document.getElementById('successModal').classList.add('show');
+            
+            // Here you would typically send the data to your payment processor
+            console.log('Donation data:', {
+                ...donationData,
+                name,
+                email,
+                phone,
+                purpose: document.getElementById('donationPurpose').value,
+                newsletter: document.getElementById('newsletter').checked
+            });
+        });
+
+        function closeModal() {
+            document.getElementById('successModal').classList.remove('show');
+            // Reset form
+            location.reload();
+        }
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

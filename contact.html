@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Nébéday</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Verdana&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #00A5AA;
+            --primary-green: #CAD401;
+            --brown: #513826;
+            --bg-light: #F9F9F9;
+            --white: #FFFFFF;
+            --text-dark: #2C2C2C;
+            --text-gray: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Verdana, Geneva, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 0.6s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-blue);
+        }
+
+        .btn-donate {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 165, 170, 0.3);
+        }
+
+        .btn-donate:hover {
+            background: var(--primary-green);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(202, 212, 1, 0.4);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, rgba(0, 165, 170, 0.95) 0%, rgba(81, 56, 38, 0.9) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%2300A5AA" width="1200" height="400"/><g fill-opacity="0.1"><circle fill="%23CAD401" cx="300" cy="200" r="120"/><circle fill="%23CAD401" cx="900" cy="150" r="150"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 5rem 2rem 3rem;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .page-header p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        .breadcrumb a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 4rem 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .form-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--brown);
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            color: var(--brown);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-submit:hover {
+            background: var(--primary-green);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(202, 212, 1, 0.4);
+        }
+
+        /* Contact Info */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .info-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--brown);
+            margin-bottom: 0.8rem;
+        }
+
+        .info-content {
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        .info-content a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .info-content a:hover {
+            color: var(--primary-green);
+        }
+
+        /* Offices Section */
+        .offices-section {
+            background: var(--white);
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            text-align: center;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .offices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .office-card {
+            background: var(--bg-light);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .office-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .office-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .office-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--brown);
+            margin-bottom: 1rem;
+        }
+
+        .office-details {
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        .office-details div {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 5rem 0;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: var(--white);
+            padding: 5rem 0;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-light);
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--brown);
+            transition: background 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(0, 165, 170, 0.05);
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        .faq-answer-content {
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        /* Social Media Section */
+        .social-section {
+            padding: 5rem 0;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .social-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .social-card-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-card-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--brown);
+            margin-bottom: 0.8rem;
+        }
+
+        .social-card-handle {
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .social-card-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--primary-blue);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .social-card-btn:hover {
+            background: var(--primary-green);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--brown);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-green);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--primary-green);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--primary-blue);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+
+            .offices-grid, .social-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .map-container {
+                height: 350px;
+            }
+        }
+
+        /* Scroll animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="/accueil.html" class="logo"><img src="./logo.png" alt="logo du site"></a>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/accueil">Accueil</a></li>
+                <li><a href="/notre-association.html">Notre association</a></li>
+                <li><a href="/actualites.html">Actualités</a></li>
+                <li><a href="/nebeday-community.html">Nébéday Community</a></li>
+                <li><a href="/contact.html" class="active">Contact</a></li>
+                <li><a href="/don.html" class="btn-donate">Faire un don</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Contactez-nous</h1>
+        <p>Une question, une suggestion ou envie de collaborer ? Nous sommes à votre écoute !</p>
+    </section>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="/accueil.html">Accueil</a> / <span>Contact</span>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid scroll-animate">
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <h2 class="form-title">Envoyez-nous un message</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label class="form-label">Nom complet *</label>
+                            <input type="text" class="form-input" placeholder="Votre nom et prénom" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Email *</label>
+                            <input type="email" class="form-input" placeholder="votre.email@exemple.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Téléphone</label>
+                            <input type="tel" class="form-input" placeholder="+221 XX XXX XX XX">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Sujet *</label>
+                            <select class="form-select" required>
+                                <option value="">Sélectionnez un sujet...</option>
+                                <option value="info">Demande d'information générale</option>
+                                <option value="partnership">Partenariat</option>
+                                <option value="volunteer">Bénévolat</option>
+                                <option value="donation">Don</option>
+                                <option value="press">Demande presse</option>
+                                <option value="other">Autre</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Votre message *</label>
+                            <textarea class="form-textarea" placeholder="Décrivez votre demande..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="form-submit">Envoyer le message 📤</button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <div class="info-card">
+                        <div class="info-icon">📍</div>
+                        <h3 class="info-title">Siège Social</h3>
+                        <div class="info-content">
+                            <p>Dakar, Sénégal</p>
+                            <p>[Adresse complète à définir]</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">📧</div>
+                        <h3 class="info-title">Email</h3>
+                        <div class="info-content">
+                            <p>Information générale :</p>
+                            <p><a href="mailto:contact@nebeday.org">contact@nebeday.org</a></p>
+                            <p style="margin-top: 0.8rem;">Partenariats :</p>
+                            <p><a href="mailto:partenariats@nebeday.org">partenariats@nebeday.org</a></p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">📞</div>
+                        <h3 class="info-title">Téléphone</h3>
+                        <div class="info-content">
+                            <p>Bureau principal :</p>
+                            <p><a href="tel:+221XXXXXXXX">+221 XX XXX XX XX</a></p>
+                            <p style="margin-top: 0.8rem;">WhatsApp :</p>
+                            <p><a href="tel:+221XXXXXXXX">+221 XX XXX XX XX</a></p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-icon">⏰</div>
+                        <h3 class="info-title">Horaires d'ouverture</h3>
+                        <div class="info-content">
+                            <p>Lundi - Vendredi : 8h00 - 17h00</p>
+                            <p>Samedi : 9h00 - 13h00</p>
+                            <p>Dimanche : Fermé</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offices Section -->
+    <section class="offices-section">
+        <div class="container">
+            <h2 class="section-title scroll-animate">Nos Bureaux Régionaux</h2>
+            <p class="section-subtitle scroll-animate">Présents dans 6 villes pour être au plus proche des communautés</p>
+            
+            <div class="offices-grid">
+                <div class="office-card scroll-animate">
+                    <div class="office-icon">🏢</div>
+                    <h3 class="office-name">Bureau Dakar</h3>
+                    <div class="office-details">
+                        <div>📍 [Adresse Dakar]</div>
+                        <div>📞 +221 XX XXX XX XX</div>
+                        <div>📧 dakar@nebeday.org</div>
+                    </div>
+                </div>
+
+                <div class="office-card scroll-animate">
+                    <div class="office-icon">🏢</div>
+                    <h3 class="office-name">Bureau Thiès</h3>
+                    <div class="office-details">
+                        <div>📍 [Adresse Thiès]</div>
+                        <div>📞 +221 XX XXX XX XX</div>
+                        <div>📧 thies@nebeday.org</div>
+                    </div>
+                </div>
+
+                <div class="office-card scroll-animate">
+                    <div class="office-icon">🏢</div>
+                    <h3 class="office-name">Bureau Fatick</h3>
+                    <div class="office-details">
+                        <div>📍 [Adresse Fatick]</div>
+                        <div>📞 +221 XX XXX XX XX</div>
+                        <div>📧 fatick@nebeday.org</div>
+                    </div>
+                </div>
+
+                <div class="office-card scroll-animate">
+                    <div class="office-icon">🏢</div>
+                    <h3 class="office-name">Bureau Saint-Louis</h3>
+                    <div class="office-details">
+                        <div>📍 [Adresse Saint-Louis]</div>
+                        <div>📞 +221 XX XXX XX XX</div>
+                        <div>📧 saintlouis@nebeday.org</div>
+                    </div>
+                </div>
+
+                <div class="office-card scroll-animate">
+                    <div class="office-icon">🏢</div>
+                    <h3 class="office-name">Bureau Ziguinchor</h3>
+                    <div class="office-details">
+                        <div>📍 [Adresse Ziguinchor]</div>
+                        <div>📞 +221 XX XXX XX XX</div>
+                        <div>📧 ziguinchor@nebeday.org</div>
+                    </div>
+                </div>
+
+                <div class="office-card scroll-animate">
+                    <div class="office-icon">🏢</div>
+                    <h3 class="office-name">Bureau Toubacouta</h3>
+                    <div class="office-details">
+                        <div>📍 [Adresse Toubacouta]</div>
+                        <div>📞 +221 XX XXX XX XX</div>
+                        <div>📧 toubacouta@nebeday.org</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2 class="section-title scroll-animate">Nous Trouver</h2>
+            <div class="map-container scroll-animate">
+                🗺️
+                <!-- Ici sera intégré Google Maps ou OpenStreetMap -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-section">
+        <div class="container">
+            <h2 class="section-title scroll-animate">Suivez-nous sur les Réseaux Sociaux</h2>
+            <p class="section-subtitle scroll-animate">Restez connectés et découvrez nos actions au quotidien</p>
+            
+            <div class="social-grid">
+                <div class="social-card scroll-animate">
+                    <div class="social-card-icon">📘</div>
+                    <h3 class="social-card-name">Facebook</h3>
+                    <p class="social-card-handle">@NebeaySenegal</p>
+                    <a href="#" class="social-card-btn">Suivre</a>
+                </div>
+
+                <div class="social-card scroll-animate">
+                    <div class="social-card-icon">📷</div>
+                    <h3 class="social-card-name">Instagram</h3>
+                    <p class="social-card-handle">@nebeday_sn</p>
+                    <a href="#" class="social-card-btn">Suivre</a>
+                </div>
+
+                <div class="social-card scroll-animate">
+                    <div class="social-card-icon">🔗</div>
+                    <h3 class="social-card-name">LinkedIn</h3>
+                    <p class="social-card-handle">Nébéday</p>
+                    <a href="#" class="social-card-btn">Suivre</a>
+                </div>
+
+                <div class="social-card scroll-animate">
+                    <div class="social-card-icon">▶️</div>
+                    <h3 class="social-card-name">YouTube</h3>
+                    <p class="social-card-handle">Nébéday Sénégal</p>
+                    <a href="#" class="social-card-btn">S'abonner</a>
+                </div>
+
+                <div class="social-card scroll-animate">
+                    <div class="social-card-icon">✖️</div>
+                    <h3 class="social-card-name">X (Twitter)</h3>
+                    <p class="social-card-handle">@nebeday</p>
+                    <a href="#" class="social-card-btn">Suivre</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title scroll-animate">Questions Fréquentes</h2>
+            <div class="faq-container">
+                <div class="faq-item scroll-animate">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Comment puis-je devenir bénévole ?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Pour devenir bénévole, inscrivez-vous à la Nébéday Community via notre page dédiée ou contactez-nous directement par email à contact@nebeday.org. Nous vous proposerons des missions adaptées à vos compétences et disponibilités.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-animate">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Puis-je visiter vos bureaux ?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Oui, nos bureaux sont ouverts au public du lundi au vendredi de 8h à 17h. Nous vous recommandons de prendre rendez-vous au préalable pour être sûr qu'un membre de l'équipe puisse vous recevoir.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-animate">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Comment faire un don à Nébéday ?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Vous pouvez faire un don en ligne via notre page "Faire un don" en utilisant Wave, Orange Money ou carte bancaire. Vous pouvez également nous contacter pour organiser un virement bancaire.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-animate">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Comment devenir partenaire de Nébéday ?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Pour explorer des opportunités de partenariat, contactez-nous à partenariats@nebeday.org avec une présentation de votre organisation et de vos objectifs de collaboration. Nous étudierons toutes les propositions avec attention.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item scroll-animate">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <span>Organisez-vous des visites de terrain ?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Oui, nous organisons régulièrement des visites de nos sites d'intervention (aires marines protégées, zones de reforestation, etc.). Contactez-nous pour connaître le calendrier des prochaines visites ou pour organiser une visite de groupe.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Nébéday</h3>
+                <p>Association sénégalaise pour la gestion durable et participative des ressources naturelles.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon">📘</a>
+                    <a href="#" class="social-icon">📷</a>
+                    <a href="#" class="social-icon">🔗</a>
+                    <a href="#" class="social-icon">▶️</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>S'informer</h3>
+                <ul>
+                    <li><a href="#">Nos actualités</a></li>
+                    <li><a href="#">Nos événements</a></li>
+                    <li><a href="#">Reboisons le Sénégal</a></li>
+                    <li><a href="#">Espace presse</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Notre association</h3>
+                <ul>
+                    <li><a href="#">Notre histoire</a></li>
+                    <li><a href="#">Notre équipe</a></li>
+                    <li><a href="#">Nos partenaires</a></li>
+                    <li><a href="#">Rapports d'activités</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="mailto:contact@nebeday.org">📧 contact@nebeday.org</a></li>
+                    <li><a href="tel:+221...">📞 +221 ...</a></li>
+                    <li><a href="#">Nous rejoindre</a></li>
+                    <li><a href="#">Recrutement</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Nébéday - Tous droits réservés | <a href="#" style="color: inherit;">Mentions légales</a> | <a href="#" style="color: inherit;">Politique de confidentialité</a></p>
+            <p style="margin-top: 1rem; font-size: 0.85rem;">Site développé par Grapelink</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // FAQ Toggle
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            const wasActive = faqItem.classList.contains('active');
+            
+            // Close all FAQs
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Open clicked FAQ if it wasn't active
+            if (!wasActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('✅ Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.');
+            this.reset();
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nébéday Community - Rejoignez-nous !</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Verdana&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #00A5AA;
+            --primary-green: #CAD401;
+            --brown: #513826;
+            --bg-light: #F9F9F9;
+            --white: #FFFFFF;
+            --text-dark: #2C2C2C;
+            --text-gray: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Verdana, Geneva, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 0.6s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-blue);
+        }
+
+        .btn-donate {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 165, 170, 0.3);
+        }
+
+        .btn-donate:hover {
+            background: var(--primary-green);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(202, 212, 1, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 165, 170, 0.95) 0%, rgba(202, 212, 1, 0.9) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%2300A5AA" width="1200" height="600"/><g fill-opacity="0.1"><circle fill="%23FFFFFF" cx="200" cy="300" r="150"/><circle fill="%23FFFFFF" cx="800" cy="200" r="200"/><circle fill="%23FFFFFF" cx="1000" cy="450" r="180"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 6rem 2rem;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary-blue);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            background: var(--brown);
+            color: var(--white);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* What is Community Section */
+        .what-is-section {
+            padding: 5rem 0;
+            background: var(--white);
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            text-align: center;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .what-is-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .what-is-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: var(--text-gray);
+            font-size: 1.05rem;
+        }
+
+        .what-is-image {
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            padding: 4rem 2rem;
+            color: var(--white);
+            margin: 4rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 5rem 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            text-align: center;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .benefit-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--brown);
+            margin-bottom: 1rem;
+        }
+
+        .benefit-description {
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        /* Events Section */
+        .events-section {
+            background: var(--white);
+            padding: 5rem 0;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .event-card {
+            background: var(--bg-light);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .event-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+        }
+
+        .event-date-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--white);
+            color: var(--brown);
+            padding: 0.8rem 1.2rem;
+            border-radius: 10px;
+            font-weight: 700;
+            text-align: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+        }
+
+        .event-date-day {
+            font-size: 1.5rem;
+            display: block;
+        }
+
+        .event-date-month {
+            font-size: 0.9rem;
+        }
+
+        .event-content {
+            padding: 2rem;
+        }
+
+        .event-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--brown);
+            margin-bottom: 1rem;
+        }
+
+        .event-details {
+            color: var(--text-gray);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .event-details div {
+            margin-bottom: 0.5rem;
+        }
+
+        .event-link {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .event-link:hover {
+            color: var(--primary-green);
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 5rem 0;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+        .quote-icon {
+            font-size: 4rem;
+            color: var(--primary-green);
+            opacity: 0.3;
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+        }
+
+        .testimonial-text {
+            color: var(--text-gray);
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-photo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+
+        .author-info h4 {
+            font-weight: 700;
+            color: var(--brown);
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Join Form Section */
+        .join-section {
+            background: var(--brown);
+            color: var(--white);
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .join-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><path fill="rgba(255,255,255,0.03)" d="M0,300 Q300,200 600,300 T1200,300 L1200,600 L0,600 Z"/></svg>');
+            background-size: cover;
+        }
+
+        .join-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .join-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .join-text {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+        }
+
+        .join-form {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            color: var(--brown);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-checkbox {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-submit:hover {
+            background: var(--primary-green);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(202, 212, 1, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--brown);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-green);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--primary-green);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--primary-blue);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .what-is-content {
+                grid-template-columns: 1fr;
+            }
+
+            .what-is-image {
+                height: 300px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .benefits-grid, .events-grid, .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .join-form {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Scroll animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="/accueil" class="logo"><img src="./logo.png" alt="logo du site"></a>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/accueil">Accueil</a></li>
+                <li><a href="/notre-association.html">Notre association</a></li>
+                <li><a href="/actualites.html">Actualités</a></li>
+                <li><a href="/nebeday-community.html" class="active">Nébéday Community</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+                <li><a href="/don.html" class="btn-donate">Faire un don</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>🌱 Nébéday Community</h1>
+        <p>Rejoignez une communauté engagée de citoyens, volontaires et acteurs du changement pour la protection de l'environnement au Sénégal</p>
+        <div class="hero-buttons">
+            <a href="#rejoindre" class="btn-primary">Rejoindre la communauté</a>
+            <a href="#events" class="btn-secondary">Voir les événements</a>
+        </div>
+    </section>
+
+    <!-- What is Community Section -->
+    <section class="what-is-section">
+        <div class="container">
+            <h2 class="section-title scroll-animate">Qu'est-ce que la Nébéday Community ?</h2>
+            <div class="what-is-content scroll-animate">
+                <div class="what-is-text">
+                    <p>La Nébéday Community est un réseau dynamique et inclusif de personnes passionnées par l'environnement qui souhaitent contribuer activement à la protection de la nature au Sénégal.</p>
+                    
+                    <p>En tant que membre, vous rejoignez une famille de citoyens engagés, de volontaires, d'étudiants, de professionnels et d'acteurs du changement qui partagent la même vision : un Sénégal où les écosystèmes sont préservés et les communautés vivent en harmonie avec la nature.</p>
+                    
+                    <p>Que vous puissiez donner quelques heures par mois ou vous engager plus régulièrement, il y a une place pour vous dans notre communauté !</p>
+                </div>
+                <div class="what-is-image">
+                    👥
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-number">2,500+</span>
+                <span class="stat-label">Membres actifs</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">150+</span>
+                <span class="stat-label">Événements par an</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">50+</span>
+                <span class="stat-label">Projets collaboratifs</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">10</span>
+                <span class="stat-label">Régions représentées</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2 class="section-title scroll-animate">Pourquoi Rejoindre la Community ?</h2>
+            <p class="section-subtitle scroll-animate">Les avantages d'être membre de Nébéday Community</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card scroll-animate">
+                    <div class="benefit-icon">🤝</div>
+                    <h3 class="benefit-title">Réseau Engagé</h3>
+                    <p class="benefit-description">Rencontrez des personnes passionnées et engagées qui partagent vos valeurs environnementales.</p>
+                </div>
+
+                <div class="benefit-card scroll-animate">
+                    <div class="benefit-icon">🎓</div>
+                    <h3 class="benefit-title">Formation Continue</h3>
+                    <p class="benefit-description">Accédez à des formations, ateliers et webinaires sur les thématiques environnementales.</p>
+                </div>
+
+                <div class="benefit-card scroll-animate">
+                    <div class="benefit-icon">🌍</div>
+                    <h3 class="benefit-title">Actions Concrètes</h3>
+                    <p class="benefit-description">Participez à des actions de terrain : plantations, nettoyages, sensibilisations.</p>
+                </div>
+
+                <div class="benefit-card scroll-animate">
+                    <div class="benefit-icon">📚</div>
+                    <h3 class="benefit-title">Ressources Exclusives</h3>
+                    <p class="benefit-description">Accédez à notre bibliothèque de ressources, études et documents techniques.</p>
+                </div>
+
+                <div class="benefit-card scroll-animate">
+                    <div class="benefit-icon">🎉</div>
+                    <h3 class="benefit-title">Événements Privés</h3>
+                    <p class="benefit-description">Invitations prioritaires à nos événements, conférences et rencontres communautaires.</p>
+                </div>
+
+                <div class="benefit-card scroll-animate">
+                    <div class="benefit-icon">📰</div>
+                    <h3 class="benefit-title">Newsletter Exclusive</h3>
+                    <p class="benefit-description">Recevez nos actualités en avant-première et restez informé de nos actions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events-section" id="events">
+        <div class="container">
+            <h2 class="section-title scroll-animate">Nos Prochains Événements</h2>
+            <p class="section-subtitle scroll-animate">Rejoignez-nous lors de nos activités communautaires</p>
+            
+            <div class="events-grid">
+                <div class="event-card scroll-animate">
+                    <div class="event-image">
+                        <div class="event-date-badge">
+                            <span class="event-date-day">20</span>
+                            <span class="event-date-month">JAN</span>
+                        </div>
+                        🌳
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-title">Journée de Plantation Communautaire</h3>
+                        <div class="event-details">
+                            <div>📍 Forêt de Mbao, Dakar</div>
+                            <div>⏰ 8h00 - 14h00</div>
+                            <div>👥 100 participants attendus</div>
+                        </div>
+                        <a href="#" class="event-link">S'inscrire →</a>
+                    </div>
+                </div>
+
+                <div class="event-card scroll-animate">
+                    <div class="event-image">
+                        <div class="event-date-badge">
+                            <span class="event-date-day">25</span>
+                            <span class="event-date-month">JAN</span>
+                        </div>
+                        🎓
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-title">Atelier : Permaculture Urbaine</h3>
+                        <div class="event-details">
+                            <div>📍 Siège Nébéday, Dakar</div>
+                            <div>⏰ 14h00 - 18h00</div>
+                            <div>👥 30 places disponibles</div>
+                        </div>
+                        <a href="#" class="event-link">S'inscrire →</a>
+                    </div>
+                </div>
+
+                <div class="event-card scroll-animate">
+                    <div class="event-image">
+                        <div class="event-date-badge">
+                            <span class="event-date-day">02</span>
+                            <span class="event-date-month">FÉV</span>
+                        </div>
+                        🌊
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-title">Nettoyage des Plages de Rufisque</h3>
+                        <div class="event-details">
+                            <div>📍 Plage de Rufisque</div>
+                            <div>⏰ 7h00 - 12h00</div>
+                            <div>👥 150 participants attendus</div>
+                        </div>
+                        <a href="#" class="event-link">S'inscrire →</a>
+                    </div>
+                </div>
+
+                <div class="event-card scroll-animate">
+                    <div class="event-image">
+                        <div class="event-date-badge">
+                            <span class="event-date-day">10</span>
+                            <span class="event-date-month">FÉV</span>
+                        </div>
+                        🎤
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-title">Conférence : Changements Climatiques</h3>
+                        <div class="event-details">
+                            <div>📍 En ligne (Zoom)</div>
+                            <div>⏰ 18h00 - 20h00</div>
+                            <div>👥 Inscription gratuite</div>
+                        </div>
+                        <a href="#" class="event-link">S'inscrire →</a>
+                    </div>
+                </div>
+
+                <div class="event-card scroll-animate">
+                    <div class="event-image">
+                        <div class="event-date-badge">
+                            <span class="event-date-day">15</span>
+                            <span class="event-date-month">FÉV</span>
+                        </div>
+                        🚴
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-title">Randonnée Écologique à Toubab Dialaw</h3>
+                        <div class="event-details">
+                            <div>📍 Toubab Dialaw</div>
+                            <div>⏰ 9h00 - 16h00</div>
+                            <div>👥 50 places disponibles</div>
+                        </div>
+                        <a href="#" class="event-link">S'inscrire →</a>
+                    </div>
+                </div>
+
+                <div class="event-card scroll-animate">
+                    <div class="event-image">
+                        <div class="event-date-badge">
+                            <span class="event-date-day">28</span>
+                            <span class="event-date-month">FÉV</span>
+                        </div>
+                        🎨
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-title">Atelier Créatif : Art & Recyclage</h3>
+                        <div class="event-details">
+                            <div>📍 Centre culturel, Thiès</div>
+                            <div>⏰ 15h00 - 19h00</div>
+                            <div>👥 25 participants max</div>
+                        </div>
+                        <a href="#" class="event-link">S'inscrire →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title scroll-animate">Ils Témoignent</h2>
+            <p class="section-subtitle scroll-animate">Ce que disent nos membres</p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card scroll-animate">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">
+                        "Rejoindre la Nébéday Community a changé ma vie ! J'ai rencontré des personnes incroyables et j'ai enfin l'impression de contribuer concrètement à la protection de notre environnement."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-photo">👩</div>
+                        <div class="author-info">
+                            <h4>Aïssatou Diop</h4>
+                            <p>Membre depuis 2 ans, Dakar</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card scroll-animate">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">
+                        "Les formations proposées par Nébéday m'ont permis de développer mes compétences en permaculture. Aujourd'hui, j'ai mon propre jardin écologique et je partage mes connaissances !"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-photo">👨</div>
+                        <div class="author-info">
+                            <h4>Mamadou Sarr</h4>
+                            <p>Volontaire actif, Thiès</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card scroll-animate">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">
+                        "La communauté Nébéday, c'est comme une grande famille. On se soutient, on apprend ensemble et surtout, on agit pour préserver notre belle nature sénégalaise."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-photo">👩</div>
+                        <div class="author-info">
+                            <h4>Fatou Mbaye</h4>
+                            <p>Coordinatrice locale, Saint-Louis</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Form Section -->
+    <section class="join-section" id="rejoindre">
+        <div class="join-content">
+            <h2 class="join-title">🌟 Prêt(e) à Nous Rejoindre ?</h2>
+            <p class="join-text">Remplissez ce formulaire et faites partie du changement dès aujourd'hui !</p>
+            
+            <form class="join-form">
+                <div class="form-group">
+                    <label class="form-label">Prénom et Nom *</label>
+                    <input type="text" class="form-input" placeholder="Votre nom complet" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email *</label>
+                    <input type="email" class="form-input" placeholder="votre.email@exemple.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Téléphone *</label>
+                    <input type="tel" class="form-input" placeholder="+221 XX XXX XX XX" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Ville / Région *</label>
+                    <input type="text" class="form-input" placeholder="Ex: Dakar, Thiès, Saint-Louis..." required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Domaine d'intérêt *</label>
+                    <select class="form-select" required>
+                        <option value="">Sélectionnez...</option>
+                        <option value="reforestation">Reforestation</option>
+                        <option value="marine">Aires marines protégées</option>
+                        <option value="education">Éducation environnementale</option>
+                        <option value="community">Mobilisation communautaire</option>
+                        <option value="biodiversity">Conservation biodiversité</option>
+                        <option value="all">Tous les domaines</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Comment souhaitez-vous contribuer ?</label>
+                    <textarea class="form-textarea" placeholder="Parlez-nous de votre motivation et de ce que vous aimeriez faire..."></textarea>
+                </div>
+
+                <div class="form-checkbox-group">
+                    <input type="checkbox" id="newsletter" class="form-checkbox" checked>
+                    <label for="newsletter" style="color: var(--text-gray);">J'accepte de recevoir la newsletter Nébéday</label>
+                </div>
+
+                <div class="form-checkbox-group">
+                    <input type="checkbox" id="terms" class="form-checkbox" required>
+                    <label for="terms" style="color: var(--text-gray);">J'accepte les conditions d'utilisation *</label>
+                </div>
+
+                <button type="submit" class="form-submit">Rejoindre la Community 🚀</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Nébéday</h3>
+                <p>Association sénégalaise pour la gestion durable et participative des ressources naturelles.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon">📘</a>
+                    <a href="#" class="social-icon">📷</a>
+                    <a href="#" class="social-icon">🔗</a>
+                    <a href="#" class="social-icon">▶️</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>S'informer</h3>
+                <ul>
+                    <li><a href="#">Nos actualités</a></li>
+                    <li><a href="#">Nos événements</a></li>
+                    <li><a href="#">Reboisons le Sénégal</a></li>
+                    <li><a href="#">Espace presse</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Notre association</h3>
+                <ul>
+                    <li><a href="#">Notre histoire</a></li>
+                    <li><a href="#">Notre équipe</a></li>
+                    <li><a href="#">Nos partenaires</a></li>
+                    <li><a href="#">Rapports d'activités</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="mailto:contact@nebeday.org">📧 contact@nebeday.org</a></li>
+                    <li><a href="tel:+221...">📞 +221 ...</a></li>
+                    <li><a href="#">Nous rejoindre</a></li>
+                    <li><a href="#">Recrutement</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Nébéday - Tous droits réservés | <a href="#" style="color: inherit;">Mentions légales</a> | <a href="#" style="color: inherit;">Politique de confidentialité</a></p>
+            <p style="margin-top: 1rem; font-size: 0.85rem;">Site développé par Grapelink</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.querySelector('.join-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('🎉 Bienvenue dans la Nébéday Community ! Nous vous contacterons très bientôt.');
+            this.reset();
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

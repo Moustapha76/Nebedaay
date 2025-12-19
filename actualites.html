@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Actualités - Nébéday</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Verdana&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #00A5AA;
+            --primary-green: #CAD401;
+            --brown: #513826;
+            --bg-light: #F9F9F9;
+            --white: #FFFFFF;
+            --text-dark: #2C2C2C;
+            --text-gray: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Verdana, Geneva, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 0.6s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-blue);
+        }
+
+        .btn-donate {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 165, 170, 0.3);
+        }
+
+        .btn-donate:hover {
+            background: var(--primary-green);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(202, 212, 1, 0.4);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, rgba(0, 165, 170, 0.95) 0%, rgba(81, 56, 38, 0.9) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400"><rect fill="%2300A5AA" width="1200" height="400"/><g fill-opacity="0.1"><circle fill="%23CAD401" cx="300" cy="200" r="120"/><circle fill="%23CAD401" cx="900" cy="150" r="150"/></g></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 5rem 2rem 3rem;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .page-header p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        .breadcrumb a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem auto 3rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .filter-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--brown);
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.7rem 1.5rem;
+            border: 2px solid var(--primary-blue);
+            background: transparent;
+            color: var(--primary-blue);
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary-blue);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .search-box {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 0.8rem 1.5rem;
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .search-btn {
+            padding: 0.8rem 2rem;
+            background: var(--primary-green);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-btn:hover {
+            background: var(--primary-blue);
+            transform: translateY(-2px);
+        }
+
+        /* Featured Article */
+        .featured-section {
+            margin-bottom: 4rem;
+        }
+
+        .featured-article {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            transition: transform 0.4s ease;
+        }
+
+        .featured-article:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+        }
+
+        .featured-image {
+            height: 500px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            z-index: 2;
+        }
+
+        .featured-content {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-category {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .featured-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--brown);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .featured-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .featured-excerpt {
+            color: var(--text-gray);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: gap 0.3s ease;
+        }
+
+        .read-more:hover {
+            gap: 1rem;
+            color: var(--primary-green);
+        }
+
+        /* Articles Grid */
+        .articles-section {
+            padding: 3rem 0;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .article-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+        }
+
+        .article-date {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--white);
+            color: var(--brown);
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .article-content {
+            padding: 2rem;
+        }
+
+        .article-category {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .article-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--brown);
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .article-excerpt {
+            color: var(--text-gray);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 3rem 0;
+        }
+
+        .page-btn {
+            width: 45px;
+            height: 45px;
+            border: 2px solid var(--primary-blue);
+            background: transparent;
+            color: var(--primary-blue);
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .page-btn:hover, .page-btn.active {
+            background: var(--primary-blue);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: var(--white);
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .newsletter-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-text {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .newsletter-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 1rem;
+        }
+
+        .newsletter-btn {
+            padding: 1rem 2.5rem;
+            background: var(--white);
+            color: var(--primary-blue);
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .newsletter-btn:hover {
+            background: var(--brown);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--brown);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-green);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--primary-green);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--primary-blue);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .featured-article {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-image {
+                height: 300px;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .search-box {
+                flex-direction: column;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-input {
+                min-width: 100%;
+            }
+        }
+
+        /* Scroll animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="/accueil" class="logo"><img src="./logo.png" alt="logo du site"></a>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/accueil">Accueil</a></li>
+                <li><a href="/notre-association.html">Notre association</a></li>
+                <li><a href="/actualites.html" class="active">Actualités</a></li>
+                <li><a href="/nebeday-community.html">Nébéday Community</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+                <li><a href="/don.html" class="btn-donate">Faire un don</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Nos Actualités</h1>
+        <p>Suivez nos actions sur le terrain, nos événements et les dernières nouvelles de la protection de l'environnement au Sénégal</p>
+    </section>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="/accueil.html">Accueil</a> / <span>Actualités</span>
+    </div>
+
+    <div class="container">
+        <!-- Filter Section -->
+        <div class="filter-section scroll-animate">
+            <h2 class="filter-title">🔍 Filtrer les actualités</h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active">Toutes</button>
+                <button class="filter-btn">Reforestation</button>
+                <button class="filter-btn">Aires Marines</button>
+                <button class="filter-btn">Communauté</button>
+                <button class="filter-btn">Éducation</button>
+                <button class="filter-btn">Événements</button>
+                <button class="filter-btn">Partenariats</button>
+            </div>
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Rechercher un article...">
+                <button class="search-btn">Rechercher</button>
+            </div>
+        </div>
+
+        <!-- Featured Article -->
+        <div class="featured-section scroll-animate">
+            <div class="featured-article">
+                <div class="featured-image">
+                    <div class="featured-badge">À LA UNE</div>
+                    🌳
+                </div>
+                <div class="featured-content">
+                    <div class="featured-category">🌱 REFORESTATION</div>
+                    <h2 class="featured-title">Plus de 50 000 arbres plantés lors de la campagne de décembre</h2>
+                    <div class="featured-meta">
+                        <span>📅 15 décembre 2024</span>
+                        <span>✍️ Par Mariama Diallo</span>
+                        <span>⏱️ 5 min de lecture</span>
+                    </div>
+                    <p class="featured-excerpt">
+                        Une mobilisation exceptionnelle des communautés a permis de planter plus de 50 000 arbres dans les régions de Fatick, Thiès et Ziguinchor. Cette campagne marque un tournant dans notre programme "Reboisons le Sénégal" avec une participation record de plus de 2 000 volontaires, dont une majorité de jeunes et de femmes.
+                    </p>
+                    <a href="#" class="read-more">Lire l'article complet →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Articles Grid -->
+        <section class="articles-section">
+            <div class="articles-grid">
+                <article class="article-card scroll-animate">
+                    <div class="article-image">
+                        <div class="article-date">10 DÉC</div>
+                        🌊
+                    </div>
+                    <div class="article-content">
+                        <div class="article-category">🐠 Aires Marines Protégées</div>
+                        <h3 class="article-title">L'AMP de Bamboung primée pour sa gestion exemplaire</h3>
+                        <p class="article-excerpt">L'Aire Marine Protégée de Bamboung a reçu le prix de l'excellence en gestion communautaire lors du forum régional des aires protégées.</p>
+                        <a href="#" class="read-more">Lire plus →</a>
+                    </div>
+                </article>
+
+                <article class="article-card scroll-animate">
+                    <div class="article-image">
+                        <div class="article-date">08 DÉC</div>
+                        👥
+                    </div>
+                    <div class="article-content">
+                        <div class="article-category">💪 Autonomisation</div>
+                        <h3 class="article-title">50 femmes formées à l'apiculture durable</h3>
+                        <p class="article-excerpt">Un programme de formation intensif a permis à 50 femmes de la région de Fatick de maîtriser les techniques d'apiculture respectueuses de l'environnement.</p>
+                        <a href="#" class="read-more">Lire plus →</a>
+                    </div>
+                </article>
+
+                <article class="article-card scroll-animate">
+                    <div class="article-image">
+                        <div class="article-date">05 DÉC</div>
+                        🎓
+                    </div>
+                    <div class="article-content">
+                        <div class="article-category">📚 Éducation</div>
+                        <h3 class="article-title">Lancement du programme "Éco-Écoles" dans 20 établissements</h3>
+                        <p class="article-excerpt">Nébéday lance son programme d'éducation environnementale dans 20 écoles primaires à travers le pays, touchant plus de 5 000 élèves.</p>
+                        <a href="#" class="read-more">Lire plus →</a>
+                    </div>
+                </article>
+
+                <article class="article-card scroll-animate">
+                    <div class="article-image">
+                        <div class="article-date">01 DÉC</div>
+                        🤝
+                    </div>
+                    <div class="article-content">
+                        <div class="article-category">🌍 Partenariat</div>
+                        <h3 class="article-title">Nouveau partenariat avec l'Union Européenne</h3>
+                        <p class="article-excerpt">Signature d'un accord de partenariat avec l'UE pour renforcer la protection des mangroves sur la période 2024-2028.</p>
+                        <a href="#" class="read-more">Lire plus →</a>
+                    </div>
+                </article>
+
+                <article class="article-card scroll-animate">
+                    <div class="article-image">
+                        <div class="article-date">28 NOV</div>
+                        🦜
+                    </div>
+                    <div class="article-content">
+                        <div class="article-category">🐢 Biodiversité</div>
+                        <h3 class="article-title">Observation d'espèces rares de tortues marines</h3>
+                        <p class="article-excerpt">Des tortues luths, espèce en danger critique, ont été observées nichant sur les plages protégées de notre zone d'intervention.</p>
+                        <a href="#" class="read-more">Lire plus →</a>
+                    </div>
+                </article>
+
+                <article class="article-card scroll-animate">
+                    <div class="article-image">
+                        <div class="article-date">25 NOV</div>
+                        🎉
+                    </div>
+                    <div class="article-content">
+                        <div class="article-category">📅 Événement</div>
+                        <h3 class="article-title">Journée portes ouvertes : un succès populaire</h3>
+                        <p class="article-excerpt">Plus de 500 visiteurs ont découvert nos actions lors de notre journée portes ouvertes à Dakar, avec ateliers et animations pour toute la famille.</p>
+                        <a href="#" class="read-more">Lire plus →</a>
+                    </div>
+                </article>
+
+                <article class="article-card scroll-animate">
+                    <div class="article-image">
+                        <div class="article-date">20 NOV</div>
+                        🌱
+                    </div>
+                    <div class="article-content">
+                        <div class="article-category">🌳 Reforestation</div>
+                        <h3 class="article-title">Bilan de la saison de plantation 2024</h3>
+                        <p class="article-excerpt">Retour sur une saison exceptionnelle avec plus de 300 000 arbres plantés et un taux de survie record de 85% grâce à l'implication des communautés.</p>
+                        <a href="#" class="read-more">Lire plus →</a>
+                    </div>
+                </article>
+
+                <article class="article-card scroll-animate">
+                    <div class="article-image">
+                        <div class="article-date">15 NOV</div>
+                        🏆
+                    </div>
+                    <div class="article-content">
+                        <div class="article-category">🎖️ Reconnaissance</div>
+                        <h3 class="article-title">Nébéday récompensée au Green Awards Africa</h3>
+                        <p class="article-excerpt">Notre association a remporté le prix de la meilleure initiative de restauration écosystémique lors de la cérémonie des Green Awards Africa 2024.</p>
+                        <a href="#" class="read-more">Lire plus →</a>
+                    </div>
+                </article>
+
+                <article class="article-card scroll-animate">
+                    <div class="article-image">
+                        <div class="article-date">10 NOV</div>
+                        📸
+                    </div>
+                    <div class="article-content">
+                        <div class="article-category">🎬 Reportage</div>
+                        <h3 class="article-title">Documentaire : "Les Gardiens de la Mangrove"</h3>
+                        <p class="article-excerpt">Découvrez le documentaire de 30 minutes qui suit le quotidien des éco-gardes de nos aires marines protégées, disponible sur notre chaîne YouTube.</p>
+                        <a href="#" class="read-more">Lire plus →</a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="page-btn">←</button>
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn">4</button>
+                <button class="page-btn">5</button>
+                <button class="page-btn">→</button>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter-section scroll-animate">
+            <h2 class="newsletter-title">📬 Restez Informé(e)</h2>
+            <p class="newsletter-text">Inscrivez-vous à notre newsletter pour recevoir nos dernières actualités et ne rien manquer de nos actions !</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Votre adresse email" required>
+                <button type="submit" class="newsletter-btn">S'inscrire</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Nébéday</h3>
+                <p>Association sénégalaise pour la gestion durable et participative des ressources naturelles.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon">📘</a>
+                    <a href="#" class="social-icon">📷</a>
+                    <a href="#" class="social-icon">🔗</a>
+                    <a href="#" class="social-icon">▶️</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>S'informer</h3>
+                <ul>
+                    <li><a href="#">Nos actualités</a></li>
+                    <li><a href="#">Nos événements</a></li>
+                    <li><a href="#">Reboisons le Sénégal</a></li>
+                    <li><a href="#">Espace presse</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Notre association</h3>
+                <ul>
+                    <li><a href="#">Notre histoire</a></li>
+                    <li><a href="#">Notre équipe</a></li>
+                    <li><a href="#">Nos partenaires</a></li>
+                    <li><a href="#">Rapports d'activités</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="mailto:contact@nebeday.org">📧 contact@nebeday.org</a></li>
+                    <li><a href="tel:+221...">📞 +221 ...</a></li>
+                    <li><a href="#">Nous rejoindre</a></li>
+                    <li><a href="#">Recrutement</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Nébéday - Tous droits réservés | <a href="#" style="color: inherit;">Mentions légales</a> | <a href="#" style="color: inherit;">Politique de confidentialité</a></p>
+            <p style="margin-top: 1rem; font-size: 0.85rem;">Site développé par Grapelink</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Pagination
+        document.querySelectorAll('.page-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (this.textContent !== '←' && this.textContent !== '→') {
+                    document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Newsletter form
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Merci pour votre inscription ! Vous recevrez bientôt nos actualités.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
